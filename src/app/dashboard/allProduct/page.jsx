@@ -1,8 +1,9 @@
+import React from 'react';
 import Link from 'next/link';
 import React from 'react';
 import { dbConnect, collectionsObj } from "@/lib/dbConnect";
 
-const ProductPage = async () => {
+const allProductPage = async () => {
     const productCollection = dbConnect(collectionsObj.productCollection);
     const product = await productCollection.find({}).toArray();
     return (
@@ -23,9 +24,7 @@ const ProductPage = async () => {
                                 <h2 className="card-title"><strong className='font-bold'>Product Name: </strong>{product.title || product.name}</h2>
                                 <h3><strong className='font-bold'>Price:</strong> {product.price}</h3>
                                 <p><strong className='font-bold'>Description:</strong> {product.description}</p>
-                                <div className="card-actions justify-end">
-                                    <Link href={`/product/${product._id}`} className="btn btn-primary">Details</Link>
-                                </div>
+
                             </div>
                         </div>
                     ))}
@@ -35,4 +34,4 @@ const ProductPage = async () => {
     );
 };
 
-export default ProductPage;
+export default allProductPage;

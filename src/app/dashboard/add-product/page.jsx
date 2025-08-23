@@ -6,9 +6,9 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 export default async function AddProductPage() {
     const session = await getServerSession(authOptions);
 
-    if (!session) {
-        redirect("/login");
-    }
+    // if (!session) {
+    //     redirect("/login");
+    // }
 
     // Add product form goes here
     return (

@@ -14,7 +14,7 @@ const ProductHighlight = () => {
     return (
         <div className='mt-4'>
             <h1 className='text-3xl font-bold text-center mb-6'>Product Highlight</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 '>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 justify-items-center'>
                 {
                     products.slice(0, 6).map(product => (
                         <div key={product._id} className="card w-96 bg-base-100 shadow-xl">

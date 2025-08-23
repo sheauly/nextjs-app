@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { signIn } from "next-auth/react";
 
 const SocialLogin = () => {
     const handleSocialLogin = async (providerName) => {
