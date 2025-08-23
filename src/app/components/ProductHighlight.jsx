@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const products = [
     {
@@ -53,23 +54,28 @@ const products = [
 const ProductHighlight = () => {
     return (
         <div className='mt-4'>
-            <h1 className='text-3xl font-bold text-center mb-6'>Product HightLight</h1>
+            <h1 className='text-3xl font-bold text-center mb-6'>Product Highlight</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 '>
                 {
-                    products.map(
-                        product => <div key={product.id} className="card w-96 bg-base-100 shadow-xl">
-                            <figure><img src={product.image} alt="Shoes" /></figure>
+                    products.map(product => (
+                        <div key={product.id} className="card w-96 bg-base-100 shadow-xl">
+                            <figure>
+                                <img src={product.image} alt={product.name} />
+                            </figure>
                             <div className="card-body">
-                                <h2 className="card-title"><strong className='font-bold'>Product Name: </strong>{product.name}</h2>
+                                <h2 className="card-title">
+                                    <strong className='font-bold'>Product Name: </strong>{product.name}
+                                </h2>
                                 <h3><strong className='font-bold'>Price:</strong> {product.price}</h3>
                                 <p><strong className='font-bold'>Description:</strong> {product.description}</p>
                                 <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">Buy Now</button>
+                                    <Link href={`/products/${product.id}`}>
+                                        <button className="btn btn-primary">Details</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
-                    )
-
+                    ))
                 }
             </div>
         </div>
