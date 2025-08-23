@@ -52,7 +52,7 @@ export default function Navbar() {
                         {/* Add more sidebar links here */}
                     </div>
                     <div
-                        className="flex-1 bg-black bg-opacity-40"
+                        className="flex-1 "
                         onClick={() => setSidebarOpen(false)}
                     />
                 </div>

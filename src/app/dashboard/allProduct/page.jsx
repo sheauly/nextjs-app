@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
-import React from 'react';
+
+
 import { dbConnect, collectionsObj } from "@/lib/dbConnect";
 
 const allProductPage = async () => {

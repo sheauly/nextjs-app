@@ -1,9 +1,16 @@
 "use client";
 const RegisterForm = () => {
 
-    const registerUser = async ({ name, email, password }) => {
-        console.log("New user:", name, email, password);
 
+
+    // Call API route to register user
+    const registerUser = async ({ name, email, password }) => {
+        const res = await fetch("/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password }),
+        });
+        return res.json();
     };
 
     const handleSubmit = async (e) => {
@@ -12,7 +19,7 @@ const RegisterForm = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        await registerUser({ name, email, password })
+        await registerUser({ name, email, password });
     };
 
     return (
