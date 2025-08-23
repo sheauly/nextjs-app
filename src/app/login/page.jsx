@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import SocialLogin from "./components/SocialLogin";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
@@ -39,6 +40,11 @@ const LoginPage = () => {
                     >
                         Login
                     </button>
+                    <SocialLogin></SocialLogin>
+                    <div className="flex flex-col items-center gap-2 mt-4">
+                        <a href="#" className="text-blue-600 hover:underline text-sm">Forgot password?</a>
+                        <a href="/register" className="text-blue-600 hover:underline text-sm">Sign in</a>
+                    </div>
                 </form>
             </div>
         </div>

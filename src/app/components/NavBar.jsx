@@ -16,6 +16,7 @@ export default function Navbar() {
                     <Link href="/addPost">addPost</Link>
                     <Link href="/product">Product</Link>
                     <Link href="/login">Login</Link>
+                    <Link href="/dashboard/add-product">Dashboard</Link>
                     <Link href="/register">Register</Link>
                 </div>
             </nav>

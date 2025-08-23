@@ -1,25 +1,25 @@
 "use server";
+
 import bcrypt from "bcrypt";
-import dbConnect from "@/lib/dbConnect";
-import { connection } from "next/server";
+import { dbConnect, collectionsObj } from "@/lib/dbConnect";
 
-export const registerUser = async (payload) => {
-    const productCollection = dbConnect(collectionName.productCollection);
 
-    // Validation 
-    const { email, password } = payload;
+// Use a users collection for user registration
+const userCollection = dbConnect("users");
 
-    if (!email || !password) return { success: false };
-    const user = await productCollection.findOne({ email: payload.email });
+// Validation 
+const { email, password } = payload;
 
-    if (!user) {
-        const hashedPassword = await bcrypt.hash(password, 10);
 
-        payload.password = hashedPassword;
-        const result = await productCollection.insertOne(payload);
-        const { acknowledged, insertedId } = result;
-        return (acknowledged, insertedId)
-    }
-    return { success: false };
+if (!email || !password) return { success: false };
+const user = await userCollection.findOne({ email: payload.email });
 
+if (!user) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    payload.password = hashedPassword;
+    const result = await userCollection.insertOne(payload);
+    const { acknowledged, insertedId } = result;
+    return { success: acknowledged, insertedId };
 }
+return { success: false };
+

@@ -66,6 +66,10 @@ const RegisterForm = () => {
                 >
                     Register
                 </button>
+                <div className="flex flex-col items-center gap-2 mt-4">
+                    <a href="#" className="text-blue-600 hover:underline text-sm">Forgot password?</a>
+                    <a href="/login" className="text-blue-600 hover:underline text-sm">Sign up</a>
+                </div>
 
             </form>
         </div>

@@ -35,7 +35,13 @@ export const authOptions = {
                 // Return null if user data could not be retrieved
                 return null
             }
+        }),
+
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
         })
+
     ]
 }
 
