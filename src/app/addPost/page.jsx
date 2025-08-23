@@ -6,14 +6,14 @@ const AddPostPage = () => {
     const [price, setPrice] = useState('');
     const [description, setDescriptiont] = useState('');
     const [image, setImage] = useState(null);
-    const [imagePreview, setImagePreview] = useState(null);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const post = { title, price, description, imagePreview };
+        const post = { title, price, description, image };
         console.log(post);
         try {
-            const response = await fetch('http://localhost:3000/api/products', {
+            const response = await fetch('https://nextjs-app-omega-nine.vercel.app/api/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,11 +33,11 @@ const AddPostPage = () => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagePreview(reader.result);
+                setImage(reader.result);
             };
             reader.readAsDataURL(file);
         } else {
-            setImagePreview(null);
+            setImage(null);
         }
     };
 
@@ -54,8 +54,8 @@ const AddPostPage = () => {
                         onChange={handleImageChange}
                         className='w-full p-2 border rounded'
                     />
-                    {imagePreview && (
-                        <img src={imagePreview} alt="Preview" className='mt-2 max-h-40 rounded' />
+                    {image && (
+                        <img src={image} alt="image" className='mt-2 max-h-40 rounded' />
                     )}
                 </div>
                 <div>

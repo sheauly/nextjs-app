@@ -15,6 +15,7 @@ export async function GET() {
 
 export async function POST(req) {
     const postData = await req.json();
+    // If image is present as base64, store it as is
     const data = await dbConnect('products').insertOne(postData);
     return new NextResponse(JSON.stringify({ data }), {
         status: 200,
